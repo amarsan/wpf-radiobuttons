@@ -56,6 +56,12 @@ namespace RadioButtonDemo
             get { return Salads.FirstOrDefault(s => s.IsSelected); }
         }
 
+        // Dessert
+        public string[] Desserts
+        {
+            get { return Enum.GetNames(typeof (DessertEnumeration)); }
+        }
+
 
         // Property Changed
         public event PropertyChangedEventHandler PropertyChanged;

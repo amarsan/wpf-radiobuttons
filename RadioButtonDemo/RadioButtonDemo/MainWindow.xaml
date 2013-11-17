@@ -87,6 +87,7 @@
         </ListBox>
         </StackPanel>
         
+        <!-- Salads -->
         <StackPanel Grid.Row="2">
             <TextBlock Text="Select a Salad"
                        FontSize="18"
@@ -104,5 +105,25 @@
             </ItemsControl>
 
         </StackPanel>
+        
+        <!-- Dessert -->
+        <StackPanel Grid.Row="3">
+            <TextBlock Text="Select a Dessert"
+                       FontSize="18"
+                        Margin="5" />
+            <ItemsControl ItemsSource="{Binding Desserts}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <RadioButton GroupName="Desserts"
+                            Content="{Binding}"
+                                     Margin="5,1"/>
+                    </DataTemplate>
+
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+
+
+        </StackPanel>
+        
     </Grid>
 </Window>
