@@ -14,8 +14,17 @@ namespace RadioButtonDemo
         {
             VegetableDishes = new Collection<string> { "Butternut Squash Soufle", "Roasted Celery Root", "Sauteed Brussel Sprouts", "Glazed Carrots"};
             SelectedVegetableDish = VegetableDishes.Last();
+
+            Salads = new Collection<SelectetableItem>
+                {
+                    new SelectetableItem { ItemDescription = "Kale Avocado"},
+                    new SelectetableItem { ItemDescription = "Caesar"},
+                    new SelectetableItem { ItemDescription = "Arugula with Goat Cheese", IsSelected = true},
+                    new SelectetableItem { ItemDescription = "Garden"}
+                };
         }
 
+        // Vegetables
         private ICollection<string> vegetableDishes; 
         public ICollection<string> VegetableDishes 
         {
@@ -38,8 +47,17 @@ namespace RadioButtonDemo
             }
         }
 
+        // Salads
+        // Note: If you need to know when the selection has changed immediatly, e.g. for storing to DB, need to handle click event or do something in SelectableItem
+        public Collection<SelectetableItem> Salads { get; set; }
+ 
+        public SelectetableItem SelectedSalad
+        {
+            get { return Salads.FirstOrDefault(s => s.IsSelected); }
+        }
 
 
+        // Property Changed
         public event PropertyChangedEventHandler PropertyChanged;
 
         private void onNotifyPropertyChanged(string propertyName)
