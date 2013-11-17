@@ -1,0 +1,74 @@
+﻿<Window x:Class="RadioButtonDemo.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Holiday Dinner Selection" 
+        Height="350" 
+        Width="525"
+        DataContext="{StaticResource ViewModel}">
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height ="Auto" />
+        </Grid.RowDefinitions>
+        
+        <Grid.Resources>
+            <Style TargetType="{x:Type RadioButton}">
+                <Setter Property="FontSize" Value="14" />
+            </Style>
+        </Grid.Resources>
+        
+        <StackPanel>
+            
+            <!-- Main Course -->
+            <TextBlock Text="Select a Main Course"
+                       FontSize="18"
+                       Margin="5" />
+            <RadioButton Content="Turkey" 
+                         IsChecked="True"
+                         Margin="5,1"/>
+            <RadioButton Content="Ham"
+                         Margin="5,1"/>
+            <RadioButton Content="Goose"
+                         Margin="5,1"/>
+            
+            <!-- Starch -->
+            <TextBlock Text="Select a Starch"
+                       FontSize="18"
+                        Margin="5" />
+            <RadioButton GroupName="Starch"
+                         Content="Mashed Potatoes"
+                         Margin="5,1"/>
+            <RadioButton GroupName="Starch"
+                         Content ="Dinner Roll"
+                         IsChecked="True"
+                         Margin="5,1"/>
+            <RadioButton GroupName="Starch"
+                         Content="Rice Pilaf"
+                         Margin="5,1"/>
+            
+            
+        </StackPanel>
+
+        <!-- Vegetable -->
+        <StackPanel Grid.Row="1">
+            <TextBlock Text="Select a Vegetable"
+                       FontSize="18"
+                        Margin="5" />
+
+            <ListBox ItemsSource="{Binding VegetableDishes}"
+                 SelectedItem="{Binding SelectedVegetableDish}"
+                     BorderBrush="Transparent"
+                     BorderThickness="0">
+            <ListBox.ItemTemplate>
+                <DataTemplate DataType="{x:Type ListBoxItem}">
+                    <RadioButton Content="{Binding}"
+                                 IsChecked="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBoxItem}}, Path=IsSelected}" />
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        </StackPanel>
+    </Grid>
+</Window>

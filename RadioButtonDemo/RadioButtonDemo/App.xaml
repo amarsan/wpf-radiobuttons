@@ -1,0 +1,9 @@
+﻿<Application x:Class="RadioButtonDemo.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+             xmlns:this="clr-namespace:RadioButtonDemo"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <this:MainWindowViewModel x:Key="ViewModel" />
+    </Application.Resources>
+</Application>
